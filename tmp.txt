@@ -1,0 +1,50 @@
+import collections
+
+
+class Node:
+    def __init__(self, value):
+        self.left = None
+        self.right = None
+        self.val = value
+
+root = Node(3)
+root.left = Node(5)
+root.right = Node(1)
+root.left.left = Node(2)
+root.left.left.left = Node(0)
+root.left.left.right = Node(4)
+#   3
+#  5  1
+# 2
+#0 4
+#[0,4,1]
+class Sol():
+    def ds(self):
+        k = 2
+        target = root.left
+
+        conn = collections.defaultdict(list)
+        def dfs(parent, rt):
+            if parent and rt:
+                conn[rt.val].append(parent.val)
+                conn[parent.val].append(rt.val)
+            if rt:
+                dfs(rt, rt.right)
+                dfs(rt, rt.left)
+
+        def bfs():
+            level = [target.val]
+            visted = level
+            for _ in range(k):
+                next_level = []
+                for val in level:
+                    for next in conn[val]:
+                        if next not in visted:
+                            next_level += [next]
+                level = next_level
+                visted += level
+            return level
+        dfs(None, root)
+        return bfs()
+sol = Sol()
+print(sol.ds())
