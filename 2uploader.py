@@ -1,17 +1,15 @@
 from __future__ import print_function
-import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
+from utils import load_creds
 
-from quickstart import load_creds
 
 def upload_basic():
     """
     mimetype:
     https://stackoverflow.com/questions/11894772/google-drive-mime-types-listing
     """
-    # creds, _ = google.auth.default()
     creds = load_creds()
 
     try:
