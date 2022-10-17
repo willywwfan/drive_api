@@ -17,7 +17,7 @@ def upload_basic():
         service = build('drive', 'v3', credentials=creds)
 
         path = ""
-        file_name = "tmp.txt"
+        file_name = "upload_temp.txt"
         mimetype = "text/plain"
         # path = "/home/wanweif/DriveFileStream/My Drive/"
         # file_name = "Run CTS List (Responses).gsheet"

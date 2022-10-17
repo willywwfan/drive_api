@@ -37,4 +37,4 @@ def export_pdf(real_file_id, file_name):
 
 
 if __name__ == '__main__':
-    export_pdf(real_file_id='1-hUcXiwsecFnKrxvd3geNPDQ_z06SeTteQlFghymkOM', file_name="temp.txt") # temp file
+    export_pdf(real_file_id='1-hUcXiwsecFnKrxvd3geNPDQ_z06SeTteQlFghymkOM', file_name="export_temp.txt") # temp file
