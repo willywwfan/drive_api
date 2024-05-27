@@ -1,2 +1,4 @@
 env/
 credentials.json
+upload_temp.txt
+token.json

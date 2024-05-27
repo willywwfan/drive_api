@@ -3,7 +3,12 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 from utils import load_creds
+import os
 
+def generate_example_file(path, file_name):
+    with open(path + file_name, 'w') as f:
+        f.write('example content')
+    print("Generated " +  path + file_name + " successfully.")
 
 def upload_basic():
     """
@@ -27,6 +32,8 @@ def upload_basic():
         # mimetype = "image/jpeg"
 
         file_metadata = {'name': file_name}
+        if not os.path.isfile(path + file_name):
+            generate_example_file(path, file_name)
         media = MediaFileUpload(path + file_name, mimetype=mimetype)
         # pylint: disable=maybe-no-member
         file = service.files().create(body=file_metadata, media_body=media,fields='id').execute()
