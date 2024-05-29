@@ -20,3 +20,9 @@
     4. rename "credentials.json"
     
 </details>
+
+<summary>Upload upload_temp.txt to cloud:</summary>
+    
+    python uploader.py
+    
+</details>
