@@ -15,7 +15,14 @@ def upload_basic():
     mimetype:
     https://stackoverflow.com/questions/11894772/google-drive-mime-types-listing
     """
-    creds = load_creds()
+    try:
+        creds = load_creds()
+    except:
+        print("Token is expired please reauthorate.\n")
+        os.remove("token.json")
+        print("token.json has been removed.\n")
+        creds = load_creds()
+        return
 
     try:
         # create drive api client
