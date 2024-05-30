@@ -22,7 +22,6 @@ def upload_basic():
         os.remove("token.json")
         print("token.json has been removed.\n")
         creds = load_creds()
-        return
 
     try:
         # create drive api client
