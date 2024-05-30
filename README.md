@@ -26,3 +26,11 @@
     python uploader.py
     
 </details>
+
+<summary>Upload upload_temp.txt to cloud:</summary>
+
+    raise exceptions.RefreshError(
+    google.auth.exceptions.RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+
+</details>
+remove token.json and reauthorize on Chrome
