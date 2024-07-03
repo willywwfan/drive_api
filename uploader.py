@@ -10,6 +10,11 @@ def generate_example_file(path, file_name):
         f.write('example content')
     print("Generated " +  path + file_name + " successfully.")
 
+def check_file_exist(path, file_name):
+    # check upload_temp.txt exist
+    if not os.path.isfile(path + file_name):
+        generate_example_file(path, file_name)
+
 def upload_basic():
     """
     mimetype:
@@ -26,23 +31,16 @@ def upload_basic():
     try:
         # create drive api client
         service = build('drive', 'v3', credentials=creds)
-
         path = ""
         file_name = "upload_temp.txt"
         mimetype = "text/plain"
-        # path = "/home/wanweif/DriveFileStream/My Drive/"
-        # file_name = "Run CTS List (Responses).gsheet"
-        # mimetype = "application/vnd.google-apps.document"
-        # path = "/home/wanweif/DriveFileStream/My Drive/stats_to_img/"
-        # file_name = "20220608_014911_774_RAW10_4080x3072_RS_5100_PS_1_cam2_camera_interface_output_frame_11243_stats.jpg"
-        # mimetype = "image/jpeg"
-
         file_metadata = {'name': file_name}
-        if not os.path.isfile(path + file_name):
-            generate_example_file(path, file_name)
+        check_file_exist(path, file_name)
         media = MediaFileUpload(path + file_name, mimetype=mimetype)
-        # pylint: disable=maybe-no-member
-        file = service.files().create(body=file_metadata, media_body=media,fields='id').execute()
+        fileid = '1kdcYNckY9jiyJgvG6tPzEu6PaIr0W1xJ'
+
+        # update upload_temp.txt
+        file = service.files().update(body=file_metadata, media_body=media,fileId=fileid).execute()
         print(F'File ID: {file.get("id")}')
 
     except HttpError as error:

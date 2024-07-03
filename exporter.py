@@ -27,7 +27,7 @@ def export_pdf(real_file_id, file_name):
         status, done = downloader.next_chunk()
         print(F'Download {int(status.progress() * 100)}.')
 
-    with open("temp.txt", "wb") as binary_file:
+    with open("export_temp.txt", "wb") as binary_file:
         # Write bytes to file
         binary_file.write(file.getvalue())
 
